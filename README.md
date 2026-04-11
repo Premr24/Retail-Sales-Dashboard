@@ -8,7 +8,7 @@ The project demonstrates a full data engineering and analytics workflow:
 2. **Exploratory Data Analysis (EDA):** Cleaning data and discovering trends using Jupyter Notebooks.
 3. **Data Visualization & UI:** Serving the insights through a dynamic, filterable web application.
 
-![Dashboard Screenshot](replace_with_your_image_link_here.png)
+![Dashboard Screenshot](Dashboard.png)
 *(Note: Replace this link with an actual screenshot of your Streamlit dashboard!)*
 
 ---
