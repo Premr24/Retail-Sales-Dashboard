@@ -32,7 +32,7 @@ Retail-Sales-Dashboard/
 │   └── train.csv           # Original Kaggle dataset
 │
 ├── notebooks/              # Jupyter notebooks for EDA
-│   └── 01_data_cleaning.ipynb 
+│   └── data_cleaning.ipynb 
 │
 ├── scripts/                # Standalone Python modules
 │   ├── __init__.py
