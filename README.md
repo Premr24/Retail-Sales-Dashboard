@@ -9,7 +9,7 @@ The project demonstrates a full data engineering and analytics workflow:
 3. **Data Visualization & UI:** Serving the insights through a dynamic, filterable web application.
 
 ![Dashboard Screenshot](Dashboard.png)
-*(Note: Replace this link with an actual screenshot of your Streamlit dashboard!)*
+
 
 ---
 
