@@ -14,7 +14,7 @@ The project demonstrates a full data engineering and analytics workflow:
 ---
 
 ## 🛠️ Tech Stack
-* **Language:** Python 3.x
+* **Language:** Python 3.13.7
 * **Database:** MySQL
 * **Data Manipulation:** Pandas, NumPy
 * **Data Visualization:** Matplotlib, Seaborn
