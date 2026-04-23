@@ -1,29 +1,35 @@
-import os
 import pandas as pd
 from sqlalchemy import create_engine
+import os
 from dotenv import load_dotenv
+import streamlit as st
 
-# Load the hidden variables from the .env file
 load_dotenv()
 
 def get_db_connection():
-    """Establishes a connection to the MySQL database."""
-    user = os.getenv('DB_USER')
+    username = 'root'
     password = os.getenv('DB_PASSWORD')
-    host = os.getenv('DB_HOST')
-    db_name = os.getenv('DB_NAME')
-    
-    db_url = f"mysql+pymysql://{user}:{password}@{host}/{db_name}"
-    return create_engine(db_url)
+    host = 'localhost'
+    database = 'retail_sales_db'
+    return create_engine(f'mysql+pymysql://{username}:{password}@{host}/{database}')
 
 def load_and_clean_data():
-    """Pulls raw data from SQL and performs initial Pandas cleaning."""
-    engine = get_db_connection()
-    query = "SELECT * FROM sales"
-    df = pd.read_sql(query, engine)
-    
-    # Standardize dates and handle missing values
-    df['Order Date'] = pd.to_datetime(df['Order Date'], format='%d/%m/%Y')
+    # 1. Error Handling added here
+    try:
+        engine = get_db_connection()
+        query = "SELECT * FROM sales"
+        df = pd.read_sql(query, engine)
+    except Exception as e:
+        # Gracefully show an error in Streamlit instead of crashing
+        st.error(f"Database Connection Failed. Please ensure MySQL is running. Error: {e}")
+        st.stop()
+
+    # Data Cleaning
+    df['Order Date'] = pd.to_datetime(df['Order Date'], format='mixed', dayfirst=True)
+    df['Ship Date'] = pd.to_datetime(df['Ship Date'], format='mixed', dayfirst=True)
     df.dropna(subset=['Postal Code'], inplace=True)
     
+    # 2. Drop duplicates added here
+    df.drop_duplicates(inplace=True)
+
     return df
